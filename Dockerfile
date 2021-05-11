@@ -1,4 +1,4 @@
-FROM openjdk:8
-ExPOSE 8081
-ADD target/docker-jenkins-integration.jar docker-jenkins-integration.jar
-ENTRYPOINT ["java","jar","/docker-jenkins-integration.jar"]
+FROM openjdk:8-jdk-alpine
+ARG JAR_FILE=target/*.jar
+COPY ${JAR_FILE} app.jar
+ENTRYPOINT ["java","-jar","/app.jar"]
